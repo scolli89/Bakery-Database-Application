@@ -10,9 +10,23 @@ const sqlport = 3306;
 const port= 5000;
 const urlBase = "/bake";
 
+app.use(function(req, res, next) {
+
+  res.header("Access-Control-Allow-Origin", "*");
+
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  // this might fix it
+  res.header("Access-Control-Allow-Methods","GET, POST, OPTIONS, PUT, DELETE");
+
+  next();
+
+});
+
+
+
 var db = mysql.createConnection({
   host: "localhost",
-  port: 3306,
+  port: sqlport,
   user: "bob",
   password: "123456789",
   database: 'bakery'

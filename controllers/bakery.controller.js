@@ -6,11 +6,11 @@ exports.books_getOne = function (req,res){
 };
 
 exports.fOne = function(req,res){
-    console.log("hi");
+    console.log("Function 1");
    
         db.query("SELECT * FROM customer", function (err, result, fields) {
           if (err) throw err;
-          //console.log(result);
+          console.log(result);
           res.send(result);
         });
         
@@ -19,14 +19,14 @@ exports.fOne = function(req,res){
 };
 
 exports.fTwo = function(req,res){
-    console.log("there");
+    console.log("function 2");
 };
 exports.fThree = function(req,res){
-    console.log("whta");
+    console.log("function 3");
 };
 exports.fFour = function(req,res){
-    console.log("gasdsad");
+    console.log("funciton 4");
 };
 exports.fFive = function(req,res){
-    console.log("daskjdhkasjd");
+    console.log("function 5");
 };
