@@ -17,7 +17,7 @@ exports.getCustomers = function(req,res){
 
 exports.getCategories = function(req,res){
     console.log("get all categories");
-    //query for all categories 
+    //query for all categories
     db.query("SELECT * FROM recipecategory",function (err,result,fields){
         if (err) throw err;
         console.log(result);
