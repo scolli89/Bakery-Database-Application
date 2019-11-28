@@ -4,6 +4,7 @@
 var dataBase;
 var doingSomething = false; // if
 var theUrl = 'http://localhost:5000/bake';
+
 //http://107.22.132.66:8080/books';//api';
 //'http://localhost:8080/books';//'';
 //"
@@ -76,6 +77,18 @@ function myOnLoad(){
         console.log('HI');
         document.getElementById("ServerResponse").style="display:none";
         document.getElementById("recipeEnter").style="display:initial";
+        var RecipeBody
+        {
+          "recipeName":document.getElementById("Name").value,
+          "categoryNo":document.getElementById("catNo").value,
+          "instructions":document.getElementById("instructions").value,
+          "qtyPerRecipe":document.getElementById("qtyForRecipe").value,
+          "estPrepTime":document.getElementById("estPrepTime").value,
+          "estCookTime":document.getElementById("estCookTime").value,
+          "qtyOnHand":document.getElementById("qtyOnHand").value,
+          "stdSellingPrice":document.getElementById("estSellingPrice").value
+        }
+        console.log(RecipeBody);
     };
     function btn3Click(){
         console.log("btn3 click");
