@@ -19,7 +19,15 @@ exports.fOne = function(req,res){
 };
 
 exports.fTwo = function(req,res){
-    console.log("function 2");
+    console.log("get all categories");
+    //query for all categories 
+    db.query("SELECT * FROM recipecategory",function (err,result,fields){
+        if (err) throw err;
+        console.log(result);
+        res.send(result);
+    });
+
+
 };
 exports.fThree = function(req,res){
     console.log("function 3");

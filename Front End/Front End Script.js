@@ -70,6 +70,7 @@ function myOnLoad(){
     };
     function btn2Click(){
         console.log("btn2 click");
+        //create the new textfields and 
     };
     function btn3Click(){
         console.log("btn3 click");
