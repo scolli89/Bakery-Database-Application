@@ -10,7 +10,7 @@ var theUrl = 'http://localhost:5000/bake';
 // Main
 window.onload = myOnLoad;
 
-/*function myOnLoad(){
+function myOnLoad(){
 
     //Actual http request functions
     const sendHttpRequest =(method,url,data)=>{
@@ -36,11 +36,12 @@ window.onload = myOnLoad;
         });
 
 
-    };*/
+    };
 
     function btn1Click(){
         console.log("btn1 click");
         console.log("update");
+        document.getElementById("ServerResponse").style="display:initial";
         var url = theUrl + "/functionOne";
         sendHttpRequest('GET',url).then(responseData => {
             console.log(responseData);
@@ -71,6 +72,7 @@ window.onload = myOnLoad;
     function btn2Click(){
         console.log("btn2 click");
         console.log('HI');
+        document.getElementById("ServerResponse").style="display:none";
     };
     function btn3Click(){
         console.log("btn3 click");
