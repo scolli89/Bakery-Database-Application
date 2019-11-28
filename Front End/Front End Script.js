@@ -10,7 +10,7 @@ var theUrl = 'http://localhost:5000/bake';
 // Main
 window.onload = myOnLoad;
 
-/*function myOnLoad(){
+function myOnLoad(){
 
     //Actual http request functions
     const sendHttpRequest =(method,url,data)=>{
@@ -36,7 +36,7 @@ window.onload = myOnLoad;
         });
 
 
-    };*/
+    };
 
     function btn1Click(){
         console.log("btn1 click");
