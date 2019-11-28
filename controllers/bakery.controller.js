@@ -3,9 +3,9 @@
         if (err) return next(err);
         res.send(book);
     })
-};
+}; */
 
-/*exports.fOne = function(req,res){
+exports.getAllCustomers = function(req,res){
     console.log("Function 1");
 
         db.query("SELECT * FROM customer", function (err, result, fields) {
@@ -16,9 +16,9 @@
 
 
 
-};*/
+};
 
-exports.fTwo = function(req,res){
+exports.getAllCategories = function(req,res){
     console.log("get all categories");
     //query for all categories 
     db.query("SELECT * FROM recipecategory",function (err,result,fields){
@@ -29,6 +29,11 @@ exports.fTwo = function(req,res){
 
 
 };
+
+exports.insertRecipe = function(req,res){
+
+};
+
 exports.fThree = function(req,res){
     console.log("function 3");
 };
