@@ -71,6 +71,7 @@ function myOnLoad(){
     };
     function btn2Click(){
         console.log("btn2 click");
+
         console.log('HI');
         document.getElementById("ServerResponse").style="display:none";
     };
