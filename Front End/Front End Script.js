@@ -1,8 +1,8 @@
 //frontEndScript
 //script.js
 // gloabl variables
-var dataBase; 
-var doingSomething = false; // if 
+var dataBase;
+var doingSomething = false; // if
 var theUrl = 'http://localhost:5000/bake';
 //http://107.22.132.66:8080/books';//api';
 //'http://localhost:8080/books';//'';
@@ -10,8 +10,8 @@ var theUrl = 'http://localhost:5000/bake';
 // Main
 window.onload = myOnLoad;
 
-function myOnLoad(){
-    
+/*function myOnLoad(){
+
     //Actual http request functions
     const sendHttpRequest =(method,url,data)=>{
         document.getElementById("outline").innerHTML = "";
@@ -23,7 +23,7 @@ function myOnLoad(){
 
         }).then(response => {
             if(response.status >= 400){ //!response.ok
-                //=      
+                //=
                 return response.json().then(errResData=>{
                     const error = new Error('Something went wrong!');
                     error.data = errResData;
@@ -34,9 +34,9 @@ function myOnLoad(){
         }).catch(response => {
             console.log(response);
         });
-                  
-        
-    };
+
+
+    };*/
 
     function btn1Click(){
         console.log("btn1 click");
@@ -61,15 +61,16 @@ function myOnLoad(){
                 para.appendChild(t1);
                 para.appendChild(t2);
                 para.appendChild(t3);
-                
+
                 ul.appendChild(para);
-                
+
             }
         });
-            
+
     };
     function btn2Click(){
         console.log("btn2 click");
+        console.log('HI');
     };
     function btn3Click(){
         console.log("btn3 click");
@@ -83,7 +84,7 @@ function myOnLoad(){
     function btn6Click(){
         console.log("btn6 click");
     };
-    
+
     //event listeners
     document.getElementById("btn1").addEventListener("click",btn1Click);
     document.getElementById("btn2").addEventListener("click",btn2Click);
@@ -95,5 +96,3 @@ function myOnLoad(){
 
 
 // button functions
-
-
