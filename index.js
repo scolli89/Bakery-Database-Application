@@ -25,15 +25,15 @@ app.use(function(req, res, next) {
 
 
 var db = mysql.createConnection({
-  host: "172.30.11.144",
+  host: "localhost",
   port: 3306,
   user: "bob",
   password: "123456789",
   database: 'bakery'
 });
 
-//db.connect((err) => { if (err) { throw err; } console.log('Connected to database'); });
-//global.db = db;
+db.connect((err) => { if (err) { throw err; } console.log('Connected to database'); });
+global.db = db;
 
 //global.db = db;
 
