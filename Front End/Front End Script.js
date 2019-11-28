@@ -41,6 +41,7 @@ function myOnLoad(){
     function btn1Click(){
         console.log("btn1 click");
         console.log("update");
+        document.getElementById("ServerResponse").style="display:initial";
         var url = theUrl + "/functionOne";
         sendHttpRequest('GET',url).then(responseData => {
             console.log(responseData);
@@ -72,7 +73,7 @@ function myOnLoad(){
         console.log("btn2 click");
 
         console.log('HI');
-
+        document.getElementById("ServerResponse").style="display:none";
     };
     function btn3Click(){
         console.log("btn3 click");
