@@ -90,6 +90,11 @@ function myOnLoad(){
         console.log("btn6 click");
     };
 
+    function SubmitRecipe()
+    {
+
+    };
+
     //event listeners
     document.getElementById("btn1").addEventListener("click",btn1Click);
     document.getElementById("btn2").addEventListener("click",btn2Click);
@@ -97,6 +102,7 @@ function myOnLoad(){
     document.getElementById("btn4").addEventListener("click",btn4Click);
     document.getElementById("btn5").addEventListener("click",btn5Click);
     document.getElementById("btn6").addEventListener("click",btn6Click);
+    document.getElementById("submitRecipe").addEventListener("click",SubmitRecipe);
 }
 
 
