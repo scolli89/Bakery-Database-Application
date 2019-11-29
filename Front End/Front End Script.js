@@ -180,7 +180,7 @@ function myOnLoad(){
                 var ingredientText = responseData[i].ingredientName + ": Qty On Hand = " + responseData[i].qtyOnHand + ", Needed = " + responseData[i].amount;
                 var tNode = document.createTextNode(ingredientText);
 
-                var li = document.createTextNode("li");
+                var li = document.createElement("li");
                 li.appendChild(tNode);
 
                 list.appendChild(li);
