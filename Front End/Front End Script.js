@@ -151,16 +151,15 @@ function myOnLoad(){
 
         sendHttpRequest('POST',url,body).then(responseData => {
             var list = document.getElementById("recipeSearchResults");
-            for (var recipe in responseData) {
-                console.log(recipe);
-                var tName = document.createTextNode("Recipe: " + recipe.recipeName);
-                var tCat = document.createTextNode("Category: " + recipe.categoryName);
-                var tInst = document.createTextNode("Instructions: " + recipe.instructions);
-                var tQty = document.createTextNode("Qty per recipe: " + recipe.qtyPerRecipe);
-                var tPrep = document.createTextNode("Prep: " + recipe.estPrepTime);
-                var tCook = document.createTextNode("Cook: " + recipe.estCookTime);
-                var tOnHand = document.createTextNode("Qty on hand: " + recipe.qtyOnHand);
-                var tPrice = document.createTextNode("Standard Price: " + recipe.stdSellingPrice);
+            for (var i in responseData) {
+                var tName = document.createTextNode("Recipe: " + responseData[i].recipeName);
+                var tCat = document.createTextNode("Category: " + responseData[i].categoryName);
+                var tInst = document.createTextNode("Instructions: " + responseData[i].instructions);
+                var tQty = document.createTextNode("Qty per recipe: " + responseData[i].qtyPerRecipe);
+                var tPrep = document.createTextNode("Prep: " + responseData[i].estPrepTime);
+                var tCook = document.createTextNode("Cook: " + responseData[i].estCookTime);
+                var tOnHand = document.createTextNode("Qty on hand: " + responseData[i].qtyOnHand);
+                var tPrice = document.createTextNode("Standard Price: " + responseData[i].stdSellingPrice);
                 
                 var p = document.createElement("p");
                 p.appendChild(tName);
@@ -178,7 +177,8 @@ function myOnLoad(){
     }
     function GetCustomerSpend()
     {
-        var mySelect=document.getElementById("catNo");
+        var mySelect=document.getElementById("customerName");
+        console.log(mySelect.value);
         console.log(mySelect.text);
     }
 
