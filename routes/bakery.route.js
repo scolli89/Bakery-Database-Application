@@ -14,7 +14,7 @@ router.post('/insertRecipe',bakery_controller.insertRecipe);
 
 //function three, get all recipes, then 
 router.get('/recipes',bakery_controller.getAllRecipes);
-router.post('/recipes',bakery_controller.makeRecipe);
+router.post('/makeRecipe',bakery_controller.makeRecipe);
 
 router.get('/ingredients',bakery_controller.getAllIngredients);
 router.post('/recipeIngredients',bakery_controller.getIforR); // get the recipe ingedients for 
