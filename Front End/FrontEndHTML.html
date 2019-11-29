@@ -8,8 +8,8 @@
     <body>
         <h1 id = "topLine">BUTTONS! </h1>
         <p id = buttonLine>
-            <button type = "button" id ="btn1">GET ALL CUSTOMERS, CHANGE TO SOMETHING COOLER</button> <br>
-            <button type = "button" id ="btn2">Function 2</button> <br>
+            <button type = "button" id ="btn1">GET ALL CUSTOMERS, CHANGE TO Get the customer spending data</button> <br>
+            <button type = "button" id ="btn2">Rad new Recipe Creator</button> <br>
             <button type = "button" id ="btn3">Function 3</button> <br>
             <button type = "button" id ="btn4">Function 4</button> <br>
             <button type = "button" id ="btn5">Get the 10 most popular recipes</button> <br>
@@ -18,9 +18,9 @@
 
 
     <section id="ServerResponse"style="display:none">
-    <h2>Response From the server </h2>
-    <p id = "outline"></p>
-    <ul id = "theList"></ul>
+        Choose Customer:
+        <br /><select id="customerName"></select><br />
+        <button type = "button" id ="customerSpend">Get Customer Spend</button>
     </section>
 
     <section id="recipeEnter" style="display: none;">
@@ -55,6 +55,10 @@
         <button type="button" id="searchRecipe">Search Recipe</button>
         <ul id="recipeSearchResults"></ul>
     </section>
+
+<section id="PopularID"style="display:none">
+    <p id="outline">Hello Friends</p>
+</section>
 
 </body>
 </html>

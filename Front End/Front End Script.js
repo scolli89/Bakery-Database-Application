@@ -15,7 +15,7 @@ function myOnLoad(){
 
     //Actual http request functions
     const sendHttpRequest =(method,url,data)=>{
-        document.getElementById("outline").innerHTML = "";
+        //document.getElementById("outline").innerHTML = "";
         return fetch(url,{
             mode: 'cors',
             method: method,
@@ -33,7 +33,7 @@ function myOnLoad(){
             }
             return response.json();
         }).catch(response => {
-            console.log(response);
+            console.log(response.json());
         });
 
 
@@ -42,33 +42,22 @@ function myOnLoad(){
     function btn1Click(){
         console.log("btn1 click");
         console.log("update");
-        document.getElementById("recipeEnter").style="display:none";
-        document.getElementById("ServerResponse").style="display:initial";
         var url = theUrl + "/customers";
         sendHttpRequest('GET',url).then(responseData => {
             console.log(responseData);
             var selectionResponse = responseData;
-            var p = document.getElementById("outline");
-            p.innerHTML = ""; // clear previousl contents
-            var ul = document.getElementById("theList");
-            ul.innerHTML = "";
-
+            var mySelect=document.getElementById("customerName");
+            mySelect.options.length=0;
             for (var i in selectionResponse){
-                var rNum = selectionResponse[i].customerNo;
-                var rName = selectionResponse[i].customerName;
-                var rAdrs = selectionResponse[i].address;
-                var t1 = document.createTextNode("No." + rNum);
-                var t2 = document.createTextNode("\nName: " + rName);
-                var t3 = document.createTextNode("\nAddress: "+rAdrs);
-                var para = document.createElement("P");
-                para.appendChild(t1);
-                para.appendChild(t2);
-                para.appendChild(t3);
-
-                ul.appendChild(para);
-
+                var option = document.createElement("option");
+                 option.text = selectionResponse[i].categoryName;
+                 option.value = selectionResponse[i].categoryNo;
+                 mySelect.add(option);
             }
         });
+        document.getElementById("ServerResponse").style="display:initial";
+        document.getElementById("PopularID").style="display:none";
+        document.getElementById("recipeEnter").style="display:none";
 
     };
     function btn2Click(){
@@ -78,10 +67,7 @@ function myOnLoad(){
             console.log(responseData);
             var selectionResponse = responseData;
             var mySelect=document.getElementById("catNo");
-            for (var i=0; i < mySelect.length; i++)
-            {
-                mySelect.remove(i);
-            }
+            //mySelect.options.length=0;
             for (var i in selectionResponse){
                 var option = document.createElement("option");
                  option.text = selectionResponse[i].categoryName;
@@ -91,6 +77,7 @@ function myOnLoad(){
         });
         console.log('HI');
         document.getElementById("ServerResponse").style="display:none";
+        document.getElementById("PopularID").style="display:none";
         document.getElementById("recipeEnter").style="display:initial";
 
         
@@ -105,8 +92,9 @@ function myOnLoad(){
     function btn5Click(){
         console.log("btn5 click");
         console.log("get");
+        document.getElementById("ServerResponse").style="display:none";
+        document.getElementById("PopularID").style="display:initial";
         document.getElementById("recipeEnter").style="display:none";
-        document.getElementById("ServerResponse").style="display:initial";
         var url = theUrl + "/mostpop";
         sendHttpRequest('GET',url).then(responseData => {
             console.log(responseData);
@@ -183,6 +171,10 @@ function myOnLoad(){
                 list.appendChild(p);
             }
         })
+    function GetCustomerSpend()
+    {
+        var mySelect=document.getElementById("catNo");
+        console.log(mySelect.text);
     }
 
     //event listeners
@@ -194,7 +186,5 @@ function myOnLoad(){
     document.getElementById("btn6").addEventListener("click",btn6Click);
     document.getElementById("submitRecipe").addEventListener("click",SubmitRecipe);
     document.getElementById('searchRecipe').addEventListener("click",SearchRecipe);
+    document.getElementById("customerSpend").addEventListener("click",GetCustomerSpend);
 }
-
-
-// button functions
