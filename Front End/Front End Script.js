@@ -106,14 +106,14 @@ function myOnLoad(){
             var list = document.getElementById("mostPopularList");
             list.innerHTML = "";
 
-            for (var i in selectionResponse){
+            for (var i in responseData){
                 var rName = responseData[i].recipeName;
                 var rQty = responseData[i].qtyOrdered;
                 var t1 = document.createTextNode("Recipe: " + rName);
                 var t2 = document.createTextNode("Quantity Ordered: " + rQty);
                 var para = document.createElement("P");
                 para.appendChild(t1);
-                para.document.createElement("br");
+                para.appendChild(document.createElement("br"));
                 para.appendChild(t2);
 
                 list.appendChild(para);
