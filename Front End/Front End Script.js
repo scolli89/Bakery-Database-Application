@@ -104,6 +104,8 @@ function myOnLoad(){
         document.getElementById("SubtractIngredients").style="display:initial";
         document.getElementById("RecipeSearch").style="display:none";
         document.getElementById("Top10").style="display:none";
+
+        GrabIngredients();
     };
     function btn4Click(){
         console.log("btn4 click");
@@ -166,7 +168,24 @@ function myOnLoad(){
 
     function GrabIngredients() {
         var selector = document.getElementById("recipeSelect");
-        console.log("Getting Ingredients for:" + selector.text);
+        console.log("Getting Ingredients for:" + selector.value);
+        var url = theUrl + "/recipeIngredients";
+        var body = {
+            recipeNo: selector.value
+        };
+        sendHttpRequest('POST',url,body).then(responseData => {
+            var list = document.getElementById("ingredientList");
+            list.innerHTML = "";
+            for (var i in responseData) {
+                var ingredientText = responseData[i].ingredientName + ": Qty On Hand = " + responseData[i].qtyOnHand + ", Needed = " + responseData[i].amount;
+                var tNode = document.createTextNode(ingredientText);
+
+                var li = document.createTextNode("li");
+                li.appendChild(tNode);
+
+                list.appendChild(li);
+            }
+        });
     }
 
     function MakeRecipe() {
