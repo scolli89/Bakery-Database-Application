@@ -144,6 +144,7 @@ function myOnLoad(){
     };
     function btn6Click(){
         console.log("btn6 click");
+        document.getElementById("top").innerText = "";
     };
 
     function SubmitRecipe()
