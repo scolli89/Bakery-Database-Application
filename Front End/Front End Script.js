@@ -98,17 +98,17 @@ function myOnLoad(){
                  option.value = responseData[i].recipeNo;
                  recipeSelect.add(option);
             }
+            
+            var list = document.getElementById("ingredientList");
+            list.innerHTML = "";
+
+            GrabIngredients();
         });
         document.getElementById("ServerResponse").style="display:none";
         document.getElementById("recipeEnter").style="display:none";
         document.getElementById("SubtractIngredients").style="display:initial";
         document.getElementById("RecipeSearch").style="display:none";
         document.getElementById("Top10").style="display:none";
-
-        var list = document.getElementById("ingredientList");
-        list.innerHTML = "";
-
-        GrabIngredients();
     };
     function btn4Click(){
         console.log("btn4 click");
