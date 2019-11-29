@@ -152,6 +152,7 @@ function myOnLoad(){
         sendHttpRequest('POST',url,body).then(responseData => {
             var list = document.getElementById("recipeSearchResults");
             for (var recipe in responseData) {
+                console.log(recipe);
                 var tName = document.createTextNode("Recipe: " + recipe.recipeName);
                 var tCat = document.createTextNode("Category: " + recipe.categoryName);
                 var tInst = document.createTextNode("Instructions: " + recipe.instructions);
