@@ -14,5 +14,5 @@ router.post('/insertRecipe',bakery_controller.insertRecipe);
 // function 3, getting the most popular recipes of  the last ten days. 
 router.get('/mostpop',bakery_controller.mostPop);
 //
-router.get('/functionFive',bakery_controller.fFive);
+router.post('/searchRecipe',bakery_controller.recipeSearch);
 module.exports = router;

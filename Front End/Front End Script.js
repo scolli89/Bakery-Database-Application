@@ -146,6 +146,7 @@ function myOnLoad(){
             recipeName = document.getElementById("recipeNameBox").value
         };
         var url = theUrl + "/searchRecipe";
+
         sendHttpRequest('POST',url,body).then(responseData => {
             var list = document.getElementById("recipeSearchResults");
             for (var recipe in responseData) {
@@ -171,6 +172,7 @@ function myOnLoad(){
                 list.appendChild(p);
             }
         })
+        
     function GetCustomerSpend()
     {
         var mySelect=document.getElementById("catNo");
