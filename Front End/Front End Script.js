@@ -154,6 +154,7 @@ function myOnLoad(){
 
         sendHttpRequest('POST',url,body).then(responseData => {
             var list = document.getElementById("recipeSearchResults");
+            list.innerHTML = "";
             for (var i in responseData) {
                 var tName = document.createTextNode("Recipe: " + responseData[i].recipeName);
                 var tCat = document.createTextNode("Category: " + responseData[i].categoryName);
@@ -166,13 +167,21 @@ function myOnLoad(){
                 
                 var p = document.createElement("p");
                 p.appendChild(tName);
+                p.appendChild(document.createElement("br"));
                 p.appendChild(tCat);
+                p.appendChild(document.createElement("br"));
                 p.appendChild(tInst);
+                p.appendChild(document.createElement("br"));
                 p.appendChild(tQty);
+                p.appendChild(document.createElement("br"));
                 p.appendChild(tPrep);
+                p.appendChild(document.createElement("br"));
                 p.appendChild(tCook);
+                p.appendChild(document.createElement("br"));
                 p.appendChild(tOnHand);
+                p.appendChild(document.createElement("br"));
                 p.appendChild(tPrice);
+                p.appendChild(document.createElement("br"));
 
                 list.appendChild(p);
             }

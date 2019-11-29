@@ -10,7 +10,7 @@ exports.getCustomers = function(req,res){
     console.log("Function 1");
         db.query("SELECT * FROM customer", function (err, result, fields) {
           if (err) throw err;
-          console.log(result);
+          //console.log(result);
           res.send(result);
         });
 
@@ -27,7 +27,7 @@ exports.getCustomerSpend = function(req,res){
     console.log(sql);
     db.query(sql,params,function (err,result, fields){
         if (err) throw err;
-        console.log(result);
+        //console.log(result);
         res.send(result);
     });
 };
@@ -85,10 +85,11 @@ exports.fFive = function(req,res){
 
 exports.recipeSearch = function(req,res){
 
-    var sql = 'SELECT * FROM recipe r WHERE recipeName = ?';
+    var sql = 'SELECT r.*, c.categoryName FROM recipe r INNER JOIN recipecategory c ON r.categoryNo = c.categoryNo WHERE recipeName LIKE ?';
     var params = [req.body.recipeName + "%"];
     db.query(sql,params,function (err,result,field){
         if(err) throw err;
+        console.log("XXXXXXXXXX SEARCH COMPLETE: ");
         console.log(result);
         res.send(result);
     });
