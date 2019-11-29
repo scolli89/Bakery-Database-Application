@@ -113,12 +113,12 @@ function myOnLoad(){
             var p = document.getElementById("outline");
             p.innerHTML = ""; // clear previousl contents
             var ul = document.getElementById("theList");
-            ul.innerHTML = "";
+            ul.innerHTML = "The 10 Most Popular Recipes from the last 50 days";
 
             for (var i in selectionResponse){
                 var rName = selectionResponse[i].recipeName;
                 var rQty = selectionResponse[i].qtyOrdered;
-                var t1 = document.createTextNode("Recipe:" + rName);
+                var t1 = document.createTextNode("Recipe: " + rName);
                 var t2 = document.createTextNode("\nQuantity Ordered: " + rQty);
                 var para = document.createElement("P");
                 para.appendChild(t1);
