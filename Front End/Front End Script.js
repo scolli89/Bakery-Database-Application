@@ -153,19 +153,32 @@ function myOnLoad(){
             var list = document.getElementById("recipeSearchResults");
             list.innerHTML = "";
             for (var i in responseData) {
-                var tName = "Recipe: " + responseData[i].recipeName;
-                var tCat = "\n" + "Category: " + responseData[i].categoryName;
-                var tInst = "\n" + "Instructions: " + responseData[i].instructions
-                var tQty = "\n" + "Qty per recipe: " + responseData[i].qtyPerRecipe;
-                var tPrep = "\n" + "Prep: " + responseData[i].estPrepTime;
-                var tCook = "\n" + "Cook: " + responseData[i].estCookTime;
-                var tOnHand = "\n" + "Qty on hand: " + responseData[i].qtyOnHand;
-                var tPrice = "\n" + "Standard Price: " + responseData[i].stdSellingPrice;
-
-                var textNode = document.createTextNode(tName + tCat + tInst + tQty + tPrep + tCook + tOnHand + tPrice)
+                var tName = document.createTextNode("Recipe: " + responseData[i].recipeName);
+                var tCat = document.createTextNode("Category: " + responseData[i].categoryName);
+                var tInst = document.createTextNode("Instructions: " + responseData[i].instructions);
+                var tQty = document.createTextNode("Qty per recipe: " + responseData[i].qtyPerRecipe);
+                var tPrep = document.createTextNode("Prep: " + responseData[i].estPrepTime);
+                var tCook = document.createTextNode("Cook: " + responseData[i].estCookTime);
+                var tOnHand = document.createTextNode("Qty on hand: " + responseData[i].qtyOnHand);
+                var tPrice = document.createTextNode("Standard Price: " + responseData[i].stdSellingPrice);
                 
                 var p = document.createElement("p");
-                p.appendChild(textNode);
+                p.appendChild(tName);
+                p.appendChild(document.createElement("br"));
+                p.appendChild(tCat);
+                p.appendChild(document.createElement("br"));
+                p.appendChild(tInst);
+                p.appendChild(document.createElement("br"));
+                p.appendChild(tQty);
+                p.appendChild(document.createElement("br"));
+                p.appendChild(tPrep);
+                p.appendChild(document.createElement("br"));
+                p.appendChild(tCook);
+                p.appendChild(document.createElement("br"));
+                p.appendChild(tOnHand);
+                p.appendChild(document.createElement("br"));
+                p.appendChild(tPrice);
+                p.appendChild(document.createElement("br"));
 
                 list.appendChild(p);
             }
@@ -174,7 +187,6 @@ function myOnLoad(){
     function GetCustomerSpend()
     {
         var mySelect=document.getElementById("customerName");
-        console.log(mySelect.value);
         console.log(mySelect.text);
     }
 
