@@ -143,7 +143,7 @@ function myOnLoad(){
 
     function SearchRecipe() {
         var body = {
-            recipeName = document.getElementById("recipeNameBox").value
+            recipeName: document.getElementById("recipeNameBox").value
         };
         var url = theUrl + "/searchRecipe";
 
@@ -172,7 +172,7 @@ function myOnLoad(){
                 list.appendChild(p);
             }
         })
-        
+    }
     function GetCustomerSpend()
     {
         var mySelect=document.getElementById("catNo");
