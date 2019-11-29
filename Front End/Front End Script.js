@@ -15,7 +15,7 @@ function myOnLoad(){
 
     //Actual http request functions
     const sendHttpRequest =(method,url,data)=>{
-        document.getElementById("outline").innerHTML = "";
+        //document.getElementById("outline").innerHTML = "";
         return fetch(url,{
             mode: 'cors',
             method: method,
@@ -63,7 +63,7 @@ function myOnLoad(){
             console.log(responseData);
             var selectionResponse = responseData;
             var mySelect=document.getElementById("catNo");
-            mySelect.options.length=0;
+            //mySelect.options.length=0;
             for (var i in selectionResponse){
                 var option = document.createElement("option");
                  option.text = selectionResponse[i].categoryName;
