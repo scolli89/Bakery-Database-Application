@@ -15,9 +15,24 @@ exports.getCustomers = function(req,res){
 
 };
 
-exports.getCategories = function(req,res){
-    console.log("get all categories");
+exports.getCustomerSpend = function(req,res){
+    console.log(" Customer Spendt Function: ");
+   
+    var person = req.body.customerName;
+    var sql = "SELECT c.customerName, SUM(itemPrice) as totalMoneySpent FROM Customer c INNER JOIN OrderHeader oh ON c.customerNo = oh.customerNo INNER JOIN (SELECT ob.orderNo, ob.qty*r.stdSellingPrice*ob.discountMultiple as itemPrice FROM OrderBody ob INNER JOIN recipe r ON ob.recipeNo = r.recipeNo) tbl  ON oh.orderNo = tbl.orderNo WHERE c.CustomerName = ";
+
+    sql = sql + "'"+person+"'"; 
+    console.log(sql);
+    db.query(sql,function (err,result, fields){
+        if (err) throw err;
+        console.log(result);
+        res.send(result);
+    });
+};
+
+
     //query for all categories
+exports.getCategories = function(req,res){
     db.query("SELECT * FROM recipecategory",function (err,result,fields){
         if (err) throw err;
         console.log(result);
@@ -34,15 +49,6 @@ exports.insertRecipe = function(req,res){
     var estCook = req.body.estCookTime;
     var qtyHand = req.body.qtyOnHand;
     var sp = req.body.stdSellingPrice;
-
-    // var rName = "tesac";
-    // var catNo = 9;
-    // var instrc = "cccdalkjaslkjdaslkasdlkjlsdallkskljascc";
-    // var qtyPer = 3;
-    // var estPrep = 3;
-    // var estCook = 3;
-    // var qtyHand = 0;
-    // var sp = 13.56;
 
     console.log("Lets make a recipe");
     var sql = "INSERT INTO recipe (recipeName,categoryNo,instructions,qtyPerRecipe,estPrepTime,estCookTime,qtyOnHand,stdSellingPrice) VALUES(\'"+rName+"\',"+catNo+ ",\'"+instrc + "\',"+qtyPer +","+estPrep+","+estCook+","+qtyHand+","+sp+")" ;
