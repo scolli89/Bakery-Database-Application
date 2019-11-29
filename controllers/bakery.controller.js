@@ -82,3 +82,14 @@ exports.fFour = function(req,res){
 exports.fFive = function(req,res){
     console.log("function 5");
 };
+
+exports.recipeSearch = function(req,res){
+
+    var sql = 'SELECT * FROM recipe r WHERE recipeName = ?';
+    var params = [req.body.recipeName + "%"];
+    db.query(sql,params,function (err,result,field){
+        if(err) throw err;
+        console.log(result);
+        res.send(result);
+    });
+};

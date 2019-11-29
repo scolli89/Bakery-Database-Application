@@ -87,6 +87,7 @@ function myOnLoad(){
     };
     function btn4Click(){
         console.log("btn4 click");
+        document.getElementById("RecipeSearch").style="display:initial";
     };
     function btn5Click(){
         console.log("btn5 click");
@@ -140,6 +141,38 @@ function myOnLoad(){
           btn2Click();
     };
 
+    function SearchRecipe() {
+        var body = {
+            recipeName: document.getElementById("recipeNameBox").value
+        };
+        var url = theUrl + "/searchRecipe";
+
+        sendHttpRequest('POST',url,body).then(responseData => {
+            var list = document.getElementById("recipeSearchResults");
+            for (var recipe in responseData) {
+                var tName = document.createTextNode("Recipe: " + recipe.recipeName);
+                var tCat = document.createTextNode("Category: " + recipe.categoryName);
+                var tInst = document.createTextNode("Instructions: " + recipe.instructions);
+                var tQty = document.createTextNode("Qty per recipe: " + recipe.qtyPerRecipe);
+                var tPrep = document.createTextNode("Prep: " + recipe.estPrepTime);
+                var tCook = document.createTextNode("Cook: " + recipe.estCookTime);
+                var tOnHand = document.createTextNode("Qty on hand: " + recipe.qtyOnHand);
+                var tPrice = document.createTextNode("Standard Price: " + recipe.stdSellingPrice);
+                
+                var p = document.createElement("p");
+                p.appendChild(tName);
+                p.appendChild(tCat);
+                p.appendChild(tInst);
+                p.appendChild(tQty);
+                p.appendChild(tPrep);
+                p.appendChild(tCook);
+                p.appendChild(tOnHand);
+                p.appendChild(tPrice);
+
+                list.appendChild(p);
+            }
+        })
+    }
     function GetCustomerSpend()
     {
         var mySelect=document.getElementById("catNo");
@@ -154,8 +187,6 @@ function myOnLoad(){
     document.getElementById("btn5").addEventListener("click",btn5Click);
     document.getElementById("btn6").addEventListener("click",btn6Click);
     document.getElementById("submitRecipe").addEventListener("click",SubmitRecipe);
+    document.getElementById('searchRecipe').addEventListener("click",SearchRecipe);
     document.getElementById("customerSpend").addEventListener("click",GetCustomerSpend);
 }
-
-
-// button functions

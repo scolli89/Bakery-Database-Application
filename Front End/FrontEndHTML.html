@@ -11,7 +11,7 @@
             <button type = "button" id ="btn1">GET ALL CUSTOMERS, CHANGE TO Get the customer spending data</button> <br>
             <button type = "button" id ="btn2">Rad new Recipe Creator</button> <br>
             <button type = "button" id ="btn3">Function 3</button> <br>
-            <button type = "button" id ="btn4">Function 4</button> <br>
+            <button type = "button" id ="btn4">Recipe Search!</button> <br>
             <button type = "button" id ="btn5">Get the 10 most popular recipes</button> <br>
             <button type = "button" id ="btn6">Quit!</button> <br>
         </p>
@@ -24,27 +24,37 @@
     </section>
 
     <section id="recipeEnter" style="display: none;">
-<h2>Enter your recipe</h2>
-<form>
-  Name:
-  <br /> <input id="Name" type="text" /> <br />
-  CategoryNo:
-  <br /><select id="catNo"></select><br />
-  Instructions:
-  <br /> <input id="instructions" maxlength="250" type="text" /> <br />
-  Quantity for Recipe:
-  <br /> <input id="qtyForRecipe" max="50" min="0" type="number" /> <br />
-  Estimated prep Time:
-  <br /> <input id="estPrepTime" max="60" min="0" type="number" /> <br />
-  Estimated Cook Time:
-  <br /> <input id="estCookTime" max="120" min="0" type="number" /> <br />
-  Quantity on Hand:
-  <br /> <input id="qtyOnHand" max="120" min="0" type="number" /> <br />
-  Estimated Selling Price: <br /> <input id="estSellingPrice" max="999.99" min="0" step="0.01" type="number"/>
-  </form>
-  <button type = "button" id ="submitRecipe">Submit Recipe</button>
-  <br>
-</section>
+        <h2>Enter your recipe</h2>
+        <form>
+        Name:
+        <br /> <input id="Name" type="text" /> <br />
+        CategoryNo:
+        <br /><select id="catNo"></select><br />
+        Instructions:
+        <br /> <input id="instructions" maxlength="250" type="text" /> <br />
+        Quantity for Recipe:
+        <br /> <input id="qtyForRecipe" max="50" min="0" type="number" /> <br />
+        Estimated prep Time:
+        <br /> <input id="estPrepTime" max="60" min="0" type="number" /> <br />
+        Estimated Cook Time:
+        <br /> <input id="estCookTime" max="120" min="0" type="number" /> <br />
+        Estimated Quantity on Hand:
+        <br /> <input id="qtyOnHand" max="120" min="0" type="number" /> <br />
+        Estimated Selling Price: <br /> <input id="estSellingPrice" max="999.99" min="0" step="0.01" type="number"/>
+        </form>
+        <button type = "button" id ="submitRecipe">Submit Recipe</button>
+        <br>
+    </section>
+
+    <section id="RecipeSearch" style="display: none;">
+        <h2>Search for recipes</h2>
+        <form>
+            Recipe Name:
+            <input type="text" id="recipeNameBox">
+        </form>
+        <button type="button" id="searchRecipe">Search Recipe</button>
+        <ul id="recipeSearchResults"></ul>
+    </section>
 
 <section id="PopularID"style="display:none">
     <p id="outline">Hello Friends</p>
