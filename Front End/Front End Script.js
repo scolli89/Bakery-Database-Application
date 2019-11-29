@@ -147,6 +147,8 @@ function myOnLoad(){
         };
         var url = theUrl + "/searchRecipe";
 
+        console.log("Searching for: " + body,recipeName);
+
         sendHttpRequest('POST',url,body).then(responseData => {
             var list = document.getElementById("recipeSearchResults");
             for (var recipe in responseData) {
