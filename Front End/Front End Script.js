@@ -143,8 +143,11 @@ function myOnLoad(){
             qtyOnHand: document.getElementById("qtyOnHand").value,
             stdSellingPrice: document.getElementById("estSellingPrice").value
           };
-          
           console.log(RecipeBody);
+          var url = theUrl + "/insertRecipe";
+          sendHttpRequest('POST',url,RecipeBody).then(responseData => {
+            console.log(responseData);
+        });
           btn2Click();
     };
 
