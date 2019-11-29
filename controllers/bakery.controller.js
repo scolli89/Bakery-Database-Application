@@ -68,12 +68,43 @@ exports.insertRecipe = function(req,res){
 exports.mostPop = function(req,res){
     var sql = "SELECT * FROM most_popular_last_50_days LIMIT 10;"
 
-    db.query(sql, function (err,result,field){
+    var s = "SELECT re.recipeName, sum(ob.qty) as qtyOrdered FROM OrderBody ob, Recipe re, OrderHeader oh WHERE ob.recipeNo=re.recipeNo AND ob.orderNo = oh.orderNo AND oh.dateCreated > ADDDATE(CURDATE(), INTERVAL -50 DAY) GROUP BY re.recipeNo ORDER BY sum(qty) DESC";
+
+
+    db.query(s, function (err,result,field){
         if (err) throw err;
         console.log(result);
         res.send(result);
     });
 };
+
+exports.getAllRecipes = function (req,res){
+    let sql = "SELECT recipeNo, recipeName FROM recipe";
+    db.query(sql, function (err,result,field){
+        if(err) throw err;
+        //console.log(result);
+        res.send(result);
+    });
+};
+exports.getAllIngredients = function (req,res){
+    let sql = "SELECT ingredientNo, ingredientName, qtyOnHand FROM ingredient";
+    db.query(sql, function (err,result,field){
+        if(err) throw err;
+        //console.log(result);
+        res.send(result);
+    });
+};
+exports.getIforR = function (req,res){
+    let params = [ req.body.recipeNo]
+    let sql = "SELECT i.ingredientName, i.qtyOnHand, ri.amount FROM Ingredient i INNER JOIN RecipeIngredient ri ON i.ingredientNo = ri.ingredientNo INNER JOIN Recipe r ON ri.recipeNo = r.recipeNo WHERE r.recipeNo = ?";
+    db.query(sql,params, function (err,result,field){
+        if(err) throw err;
+        //console.log(result);
+        res.send(result);
+    });
+
+};
+
 
 
 exports.fFour = function(req,res){
