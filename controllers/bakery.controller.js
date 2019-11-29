@@ -5,6 +5,7 @@ exports.books_getOne = function (req,res){
     })
 };
 
+//runctions needed to get the total spent by a customer
 exports.getCustomers = function(req,res){
     console.log("Function 1");
         db.query("SELECT * FROM customer", function (err, result, fields) {
@@ -30,10 +31,10 @@ exports.getCustomerSpend = function(req,res){
     });
 };
 
-
-    //query for all categories
+//functions needed for inserting a recipe
 exports.getCategories = function(req,res){
-    db.query("SELECT * FROM recipecategory",function (err,result,fields){
+    var sql = "SELECT * FROM recipecategory";
+    db.query(sql,function (err,result,fields){
         if (err) throw err;
         console.log(result);
         res.send(result);
@@ -59,6 +60,18 @@ exports.insertRecipe = function(req,res){
     res.send("recipe inserted successfully")
   });
 };
+
+// functions needed for getting the ten most popular
+exports.mostPop = function(req,res){
+    var sql = "SELECT * FROM most_popular_last_50_days LIMIT 10;"
+
+    db.query(sql, function (err,result,field){
+        if (err) throw err;
+        console.log(result);
+        res.send(result);
+    });
+};
+
 
 exports.fFour = function(req,res){
     console.log("funciton 4");

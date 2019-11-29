@@ -73,10 +73,25 @@ function myOnLoad(){
     };
     function btn2Click(){
         console.log("btn2 click");
-
+        var url = theUrl + "/categories";
+        sendHttpRequest('GET',url).then(responseData => {
+            console.log(responseData);
+            var selectionResponse = responseData;
+            var mySelect=document.getElementById("catNo");
+            for (var i=0; i < mySelect.length; i++)
+            {
+                mySelect.remove(i);
+            }
+            for (var i in selectionResponse){
+                var option = document.createElement("option");
+                 option.text = selectionResponse[i].categoryNo;
+                 mySelect.add(option);
+            }
+        });
         console.log('HI');
         document.getElementById("ServerResponse").style="display:none";
         document.getElementById("recipeEnter").style="display:initial";
+
         
     };
     function btn3Click(){
