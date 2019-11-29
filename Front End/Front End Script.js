@@ -55,11 +55,12 @@ function myOnLoad(){
                  mySelect.add(option);
             }
         });
+        
         document.getElementById("ServerResponse").style="display:initial";
-        document.getElementById("Top10").style="display:none";
         document.getElementById("recipeEnter").style="display:none";
+        document.getElementById("SubtractIngredients").style="display:none";
         document.getElementById("RecipeSearch").style="display:none";
-
+        document.getElementById("Top10").style="display:none";
     };
     function btn2Click(){
         console.log("btn2 click");
@@ -77,30 +78,49 @@ function myOnLoad(){
             }
         });
         console.log('HI');
-        document.getElementById("ServerResponse").style="display:none";
-        document.getElementById("Top10").style="display:none";
-        document.getElementById("recipeEnter").style="display:initial";
-        document.getElementById("RecipeSearch").style="display:none";
-
         
+        document.getElementById("ServerResponse").style="display:none";
+        document.getElementById("recipeEnter").style="display:initial";
+        document.getElementById("SubtractIngredients").style="display:none";
+        document.getElementById("RecipeSearch").style="display:none";
+        document.getElementById("Top10").style="display:none";
     };
     function btn3Click(){
         console.log("btn3 click");
+        var url = theUrl + "/recipes";
+        sendHttpRequest('GET',url).then(responseData => {
+            console.log(responseData);
+            var recipeSelect = document.getElementById("recipeSelect");
+            mySelect.options.length=0;
+            for (var i in responseData){
+                var option = document.createElement("option");
+                 option.text = responseData[i].recipeName;
+                 option.value = responseData[i].recipeNo;
+                 mySelect.add(option);
+            }
+        });
+        document.getElementById("ServerResponse").style="display:none";
+        document.getElementById("recipeEnter").style="display:none";
+        document.getElementById("SubtractIngredients").style="display:initial";
+        document.getElementById("RecipeSearch").style="display:none";
+        document.getElementById("Top10").style="display:none";
     };
     function btn4Click(){
         console.log("btn4 click");
         document.getElementById("ServerResponse").style="display:none";
-        document.getElementById("Top10").style="display:none";
         document.getElementById("recipeEnter").style="display:none";
+        document.getElementById("SubtractIngredients").style="display:none";
         document.getElementById("RecipeSearch").style="display:initial";
+        document.getElementById("Top10").style="display:none";
     };
     function btn5Click(){
         console.log("btn5 click");
         console.log("get");
         document.getElementById("ServerResponse").style="display:none";
-        document.getElementById("Top10").style="display:initial";
         document.getElementById("recipeEnter").style="display:none";
+        document.getElementById("SubtractIngredients").style="display:none";
         document.getElementById("RecipeSearch").style="display:none";
+        document.getElementById("Top10").style="display:initial";
         var url = theUrl + "/mostpop";
         sendHttpRequest('GET',url).then(responseData => {
             var list = document.getElementById("mostPopularList");
@@ -143,6 +163,15 @@ function myOnLoad(){
         });
           btn2Click();
     };
+
+    function GrabIngredients() {
+        var selector = document.getElementById("recipeSelect");
+        console.log("Getting Ingredients for:" + selector.text);
+    }
+
+    function MakeRecipe() {
+        
+    }
 
     function SearchRecipe() {
         var body = {
@@ -216,7 +245,9 @@ function myOnLoad(){
     document.getElementById("btn4").addEventListener("click",btn4Click);
     document.getElementById("btn5").addEventListener("click",btn5Click);
     document.getElementById("btn6").addEventListener("click",btn6Click);
-    document.getElementById("submitRecipe").addEventListener("click",SubmitRecipe);
-    document.getElementById('searchRecipe').addEventListener("click",SearchRecipe);
     document.getElementById("customerSpend").addEventListener("click",GetCustomerSpend);
+    document.getElementById("submitRecipe").addEventListener("click",SubmitRecipe);
+    document.getElementById("makeRecipe").addEventListener("click",MakeRecipe);
+    document.getElementById('searchRecipe').addEventListener("click",SearchRecipe);
+    document.getElementById('recipeSelect').addEventListener("onchange",GrabIngredients);
 }
