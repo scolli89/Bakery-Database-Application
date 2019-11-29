@@ -136,7 +136,7 @@ function myOnLoad(){
                 var rQty = responseData[i].qtyOrdered;
                 var t1 = document.createTextNode("Recipe: " + rName);
                 var t2 = document.createTextNode("Quantity Ordered: " + rQty);
-                var para = document.createElement("P");
+                var para = document.createElement("li");
                 para.appendChild(t1);
                 para.appendChild(document.createElement("br"));
                 para.appendChild(t2);
@@ -232,7 +232,7 @@ function myOnLoad(){
                 var tOnHand = document.createTextNode("Qty on hand: " + responseData[i].qtyOnHand);
                 var tPrice = document.createTextNode("Standard Price: " + responseData[i].stdSellingPrice);
                 
-                var p = document.createElement("p");
+                var p = document.createElement("li");
                 p.appendChild(tName);
                 p.appendChild(document.createElement("br"));
                 p.appendChild(tCat);
