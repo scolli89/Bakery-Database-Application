@@ -26,34 +26,34 @@ exports.getCategories = function(req,res){
 };
 exports.insertRecipe = function(req,res){
 
-    // var rName = req.body.recipeName;
-    // var catNo = req.body.categoryNo;
-    // var instrc = req.body.instructions;
-    // var qtyPer = req.body.qtyPerRecipe;
-    // var estPrep = req.body.estPrepTime;
-    // var estCook = req.body.estCookTime;
-    // var qtyHand = req.body.qtyOnHand;
-    // var sp = req.body.stdSellingPrice;
+    var rName = req.body.recipeName;
+    var catNo = req.body.categoryNo;
+    var instrc = req.body.instructions;
+    var qtyPer = req.body.qtyPerRecipe;
+    var estPrep = req.body.estPrepTime;
+    var estCook = req.body.estCookTime;
+    var qtyHand = req.body.qtyOnHand;
+    var sp = req.body.stdSellingPrice;
 
-    var rName = "t";
-    var catNo = 4;
-    var instrc = "ccccc";
-    var qtyPer = 3;
-    var estPrep = 3;
-    var estCook = 3;
-    var qtyHand = 0;
-    var sp = 13.56;
+    // var rName = "tesac";
+    // var catNo = 9;
+    // var instrc = "cccdalkjaslkjdaslkasdlkjlsdallkskljascc";
+    // var qtyPer = 3;
+    // var estPrep = 3;
+    // var estCook = 3;
+    // var qtyHand = 0;
+    // var sp = 13.56;
 
     console.log("Lets make a recipe");
-    var sql = "INSERT INTO recipe (recipeName,categoryNo,instructions,qtyPerRecipe,estPrepTime,estCookTime,qtyOnHand,stdSellingPrice)" +
-        "VALUES(\'"+rName+"\',\'"+catNo+ ",\'"+instrc + "\',"+qtyPer +","+estPrep+","+estCook+","+qtyHand+","+sp+")" ;
+    var sql = "INSERT INTO recipe (recipeName,categoryNo,instructions,qtyPerRecipe,estPrepTime,estCookTime,qtyOnHand,stdSellingPrice) VALUES(\'"+rName+"\',"+catNo+ ",\'"+instrc + "\',"+qtyPer +","+estPrep+","+estCook+","+qtyHand+","+sp+")" ;
     console.log(sql)
-    //db.query(sql, function (err,result,fields) {
-     //   if (err) throw err;
-    //console.log("1 record inserted");
+    db.query(sql, function (err,result,fields) {
+       if (err) throw err;
+    console.log("1 record inserted");
     res.send("recipe inserted successfully")
-  }//);
-//};
+  });
+};
+
 exports.fFour = function(req,res){
     console.log("funciton 4");
 };
