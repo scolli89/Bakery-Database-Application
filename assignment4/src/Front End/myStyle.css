@@ -20,6 +20,9 @@ p {
 li {
     background-color: seagreen;
 } 
-ul p {
+ul div {
     background-color: lawngreen;
+}
+#error {
+    background-color: red;
 }
