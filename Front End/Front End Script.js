@@ -151,15 +151,16 @@ function myOnLoad(){
 
         sendHttpRequest('POST',url,body).then(responseData => {
             var list = document.getElementById("recipeSearchResults");
+            list.innerHTML = "";
             for (var i in responseData) {
                 var tName = document.createTextNode("Recipe: " + responseData[i].recipeName);
-                var tCat = document.createTextNode("Category: " + responseData[i].categoryName);
-                var tInst = document.createTextNode("Instructions: " + responseData[i].instructions);
-                var tQty = document.createTextNode("Qty per recipe: " + responseData[i].qtyPerRecipe);
-                var tPrep = document.createTextNode("Prep: " + responseData[i].estPrepTime);
-                var tCook = document.createTextNode("Cook: " + responseData[i].estCookTime);
-                var tOnHand = document.createTextNode("Qty on hand: " + responseData[i].qtyOnHand);
-                var tPrice = document.createTextNode("Standard Price: " + responseData[i].stdSellingPrice);
+                var tCat = document.createTextNode("\n" + "Category: " + responseData[i].categoryName);
+                var tInst = document.createTextNode("\n" + "Instructions: " + responseData[i].instructions);
+                var tQty = document.createTextNode("\n" + "Qty per recipe: " + responseData[i].qtyPerRecipe);
+                var tPrep = document.createTextNode("\n" + "Prep: " + responseData[i].estPrepTime);
+                var tCook = document.createTextNode("\n" + "Cook: " + responseData[i].estCookTime);
+                var tOnHand = document.createTextNode("\n" + "Qty on hand: " + responseData[i].qtyOnHand);
+                var tPrice = document.createTextNode("\n" + "Standard Price: " + responseData[i].stdSellingPrice);
                 
                 var p = document.createElement("p");
                 p.appendChild(tName);
