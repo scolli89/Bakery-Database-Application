@@ -37,7 +37,7 @@ exports.getCategories = function(req,res){
     var sql = "SELECT * FROM recipecategory";
     db.query(sql,function (err,result,fields){
         if (err) throw err;
-        console.log(result);
+        //console.log(result);
         res.send(result);
     });
 };
@@ -68,7 +68,7 @@ exports.insertRecipe = function(req,res){
 exports.mostPop = function(req,res){
     var sql = "SELECT * FROM most_popular_last_50_days LIMIT 10;"
 
-    var s = "SELECT re.recipeName, sum(ob.qty) as qtyOrdered FROM OrderBody ob, Recipe re, OrderHeader oh WHERE ob.recipeNo=re.recipeNo AND ob.orderNo = oh.orderNo AND oh.dateCreated > ADDDATE(CURDATE(), INTERVAL -50 DAY) GROUP BY re.recipeNo ORDER BY sum(qty) DESC";
+    var s = "SELECT re.recipeName, sum(ob.qty) as qtyOrdered FROM OrderBody ob, Recipe re, OrderHeader oh WHERE ob.recipeNo=re.recipeNo AND ob.orderNo = oh.orderNo AND oh.dateCreated > ADDDATE(CURDATE(), INTERVAL -50 DAY) GROUP BY re.recipeNo ORDER BY sum(qty) DESC LIMIT 10";
 
 
     db.query(s, function (err,result,field){
@@ -114,17 +114,17 @@ exports.makeRecipe = function (req,res){
     db.query(sql,params,function(err,result,field){
         if(err) throw err;
 
-        let finalResponse = {
-            word: "Failure"
+        var finalResponse = {
+            word: "Success"
         };
 
         if (result.length == 0){
             // subtract and return the grab ingredients
             
-            let sql2 = "UPDATE Ingredient i INNER JOIN RecipeIngredient ri ON i.ingredientNo = ri.ingredientNo INNER JOIN Recipe r ON ri.recipeNo = r.recipeNo SET i.qtyOnHand = i.qtyOnHand - ri.amount WHERE r.recipeNo = (SELECT r.recipeNo FROM Recipe r WHERE r.recipeName = ?)";
+            let sql2 = "UPDATE Ingredient i INNER JOIN recipeIngredient ri ON i.ingredientNo = ri.ingredientNo INNER JOIN recipe r ON ri.recipeNo = r.recipeNo SET i.qtyOnHand = i.qtyOnHand - ri.amount WHERE r.recipeNo = ?";
             db.query(sql2,params,function (err,r,field){
                 if (err) throw err;
-                finalResponse.word = "Success";
+                console.log(r);
             });
 
         } else{
