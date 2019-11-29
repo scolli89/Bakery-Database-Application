@@ -48,25 +48,10 @@ function myOnLoad(){
         sendHttpRequest('GET',url).then(responseData => {
             console.log(responseData);
             var selectionResponse = responseData;
-            var p = document.getElementById("outline");
-            p.innerHTML = ""; // clear previousl contents
-            var ul = document.getElementById("theList");
-            ul.innerHTML = "";
-
-            for (var i in selectionResponse){
-                var rNum = selectionResponse[i].customerNo;
-                var rName = selectionResponse[i].customerName;
-                var rAdrs = selectionResponse[i].address;
-                var t1 = document.createTextNode("No." + rNum);
-                var t2 = document.createTextNode("\nName: " + rName);
-                var t3 = document.createTextNode("\nAddress: "+rAdrs);
-                var para = document.createElement("P");
-                para.appendChild(t1);
-                para.appendChild(t2);
-                para.appendChild(t3);
-
-                ul.appendChild(para);
-
+            var mySelect=document.getElementById("customerName");
+            for (var i=0; i < mySelect.length; i++)
+            {
+                mySelect.remove(i);
             }
         });
 
@@ -78,10 +63,7 @@ function myOnLoad(){
             console.log(responseData);
             var selectionResponse = responseData;
             var mySelect=document.getElementById("catNo");
-            for (var i=0; i < mySelect.length; i++)
-            {
-                mySelect.remove(i);
-            }
+            mySelect.options.length=0;
             for (var i in selectionResponse){
                 var option = document.createElement("option");
                  option.text = selectionResponse[i].categoryName;
