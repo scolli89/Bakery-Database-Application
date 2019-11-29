@@ -56,7 +56,7 @@ function myOnLoad(){
             }
         });
         document.getElementById("ServerResponse").style="display:initial";
-        document.getElementById("PopularID").style="display:none";
+        document.getElementById("Top10").style="display:none";
         document.getElementById("recipeEnter").style="display:none";
 
     };
@@ -77,7 +77,7 @@ function myOnLoad(){
         });
         console.log('HI');
         document.getElementById("ServerResponse").style="display:none";
-        document.getElementById("PopularID").style="display:none";
+        document.getElementById("Top10").style="display:none";
         document.getElementById("recipeEnter").style="display:initial";
 
         
@@ -93,27 +93,24 @@ function myOnLoad(){
         console.log("btn5 click");
         console.log("get");
         document.getElementById("ServerResponse").style="display:none";
-        document.getElementById("PopularID").style="display:initial";
+        document.getElementById("Top10").style="display:initial";
         document.getElementById("recipeEnter").style="display:none";
         var url = theUrl + "/mostpop";
         sendHttpRequest('GET',url).then(responseData => {
-            console.log(responseData);
-            var selectionResponse = responseData;
-            var p = document.getElementById("outline");
-            p.innerHTML = ""; // clear previousl contents
-            var ul = document.getElementById("theList");
-            ul.innerHTML = "The 10 Most Popular Recipes from the last 50 days";
+            var list = document.getElementById("mostPopularList");
+            list.innerHTML = "";
 
             for (var i in selectionResponse){
-                var rName = selectionResponse[i].recipeName;
-                var rQty = selectionResponse[i].qtyOrdered;
+                var rName = responseData[i].recipeName;
+                var rQty = responseData[i].qtyOrdered;
                 var t1 = document.createTextNode("Recipe: " + rName);
-                var t2 = document.createTextNode("\nQuantity Ordered: " + rQty);
+                var t2 = document.createTextNode("Quantity Ordered: " + rQty);
                 var para = document.createElement("P");
                 para.appendChild(t1);
+                para.document.createElement("br");
                 para.appendChild(t2);
 
-                ul.appendChild(para);
+                list.appendChild(para);
             }
         });
     };
