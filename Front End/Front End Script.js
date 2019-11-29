@@ -44,7 +44,7 @@ function myOnLoad(){
         console.log("update");
         document.getElementById("recipeEnter").style="display:none";
         document.getElementById("ServerResponse").style="display:initial";
-        var url = theUrl + "/functionOne";
+        var url = theUrl + "/customers";
         sendHttpRequest('GET',url).then(responseData => {
             console.log(responseData);
             var selectionResponse = responseData;
@@ -146,7 +146,7 @@ function myOnLoad(){
           };
           
           console.log(RecipeBody);
-          btn2Click();
+          //btn2Click();
     };
 
     //event listeners
