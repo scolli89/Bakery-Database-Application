@@ -91,12 +91,12 @@ function myOnLoad(){
         sendHttpRequest('GET',url).then(responseData => {
             console.log(responseData);
             var recipeSelect = document.getElementById("recipeSelect");
-            mySelect.options.length=0;
+            recipeSelect.options.length=0;
             for (var i in responseData){
                 var option = document.createElement("option");
                  option.text = responseData[i].recipeName;
                  option.value = responseData[i].recipeNo;
-                 mySelect.add(option);
+                 recipeSelect.add(option);
             }
         });
         document.getElementById("ServerResponse").style="display:none";
