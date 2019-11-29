@@ -171,6 +171,7 @@ function myOnLoad(){
                 list.appendChild(p);
             }
         })
+    }
     function GetCustomerSpend()
     {
         var mySelect=document.getElementById("catNo");
