@@ -5,9 +5,9 @@ var dataBase;
 var doingSomething = false; // if
 var theUrl = 'http://localhost:5000/bake';
 
-//http://107.22.132.66:8080/books';//api';
+//'http://107.22.132.66:8080/books';//api';
 //'http://localhost:8080/books';//'';
-//"
+//
 // Main
 window.onload = myOnLoad;
 
@@ -102,6 +102,30 @@ function myOnLoad(){
     };
     function btn5Click(){
         console.log("btn5 click");
+        console.log("get");
+        document.getElementById("recipeEnter").style="display:none";
+        document.getElementById("ServerResponse").style="display:initial";
+        var url = theUrl + "/mostpop";
+        sendHttpRequest('GET',url).then(responseData => {
+            console.log(responseData);
+            var selectionResponse = responseData;
+            var p = document.getElementById("outline");
+            p.innerHTML = ""; // clear previousl contents
+            var ul = document.getElementById("theList");
+            ul.innerHTML = "";
+
+            for (var i in selectionResponse){
+                var rName = selectionResponse[i].recipeName;
+                var rQty = selectionResponse[i].qtyOrdered;
+                var t1 = document.createTextNode("Recipe:" + rName);
+                var t2 = document.createTextNode("\nQuantity Ordered: " + rQty);
+                var para = document.createElement("P");
+                para.appendChild(t1);
+                para.appendChild(t2);
+
+                ul.appendChild(para);
+            }
+        });
     };
     function btn6Click(){
         console.log("btn6 click");
