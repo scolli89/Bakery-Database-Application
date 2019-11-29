@@ -1,0 +1,17 @@
+section {
+    color: tomato; 
+}
+body {
+    background-color: turquoise;
+}
+  
+h1 {
+    color: tomato;
+    margin-left: 40px;
+}
+
+button {
+    background-color: tomato;
+    margin: .1cm;
+}
+ 
