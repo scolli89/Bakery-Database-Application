@@ -206,7 +206,7 @@ function myOnLoad(){
             }
             else {                
                 var list = document.getElementById("ingredientList");
-                list.appendChild(document.createTextNode("Not enough ingredients"));
+                list.appendChild(document.createElement("p").appendChild(document.createTextNode("Not Enough Ingredients")));
             }
         });
     }
