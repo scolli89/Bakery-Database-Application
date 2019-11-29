@@ -113,23 +113,26 @@ exports.makeRecipe = function (req,res){
     let sql = "SELECT i.ingredientName,  i.qtyOnHand, ri.amount FROM ingredient i INNER JOIN recipeIngredient ri ON i.ingredientNo = ri.ingredientNo INNER JOIN recipe r ON ri.recipeNo = r.recipeNo WHERE r.recipeNo = ? AND i.qtyOnHand < ri.amount";
     db.query(sql,params,function(err,result,field){
         if(err) throw err;
+
+        let finalResponse = {
+            word: "Failure"
+        };
+
         if (result.length == 0){
             // subtract and return the grab ingredients
             
             let sql2 = "UPDATE Ingredient i INNER JOIN RecipeIngredient ri ON i.ingredientNo = ri.ingredientNo INNER JOIN Recipe r ON ri.recipeNo = r.recipeNo SET i.qtyOnHand = i.qtyOnHand - ri.amount WHERE r.recipeNo = (SELECT r.recipeNo FROM Recipe r WHERE r.recipeName = ?)";
             db.query(sql2,params,function (err,r,field){
                 if (err) throw err;
-                //res.send({word: "Success"});
+                finalResponse.word = "Success";
             });
 
         } else{
             // cancel the requesy say it broke. 
-            res.send({word: "Not enough ingredients"})
+            finalResponse.word = "Not Enough";
         }
 
-
-
-        res.send(result);
+        res.send(finalResponse);
     });
 
 };
