@@ -201,7 +201,7 @@ function myOnLoad(){
         };
         sendHttpRequest('POST',url,body).then(responseData => {
             console.log(responseData);
-            if (responseData[0].word == "Success"){
+            if (responseData.word == "Success"){
                 GrabIngredients();
             }
             else {                
