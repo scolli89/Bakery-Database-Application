@@ -249,5 +249,5 @@ function myOnLoad(){
     document.getElementById("submitRecipe").addEventListener("click",SubmitRecipe);
     document.getElementById("makeRecipe").addEventListener("click",MakeRecipe);
     document.getElementById('searchRecipe').addEventListener("click",SearchRecipe);
-    document.getElementById('recipeSelect').addEventListener("onchange",GrabIngredients);
+    document.getElementById('recipeSelect').addEventListener("change",GrabIngredients);
 }
