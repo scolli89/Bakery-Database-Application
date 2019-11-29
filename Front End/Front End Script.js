@@ -42,19 +42,22 @@ function myOnLoad(){
     function btn1Click(){
         console.log("btn1 click");
         console.log("update");
-        document.getElementById("ServerResponse").style="display:initial";
-        document.getElementById("PopularID").style="display:none";
-        document.getElementById("recipeEnter").style="display:none";
         var url = theUrl + "/customers";
         sendHttpRequest('GET',url).then(responseData => {
             console.log(responseData);
             var selectionResponse = responseData;
             var mySelect=document.getElementById("customerName");
-            for (var i=0; i < mySelect.length; i++)
-            {
-                mySelect.remove(i);
+            mySelect.options.length=0;
+            for (var i in selectionResponse){
+                var option = document.createElement("option");
+                 option.text = selectionResponse[i].categoryName;
+                 option.value = selectionResponse[i].categoryNo;
+                 mySelect.add(option);
             }
         });
+        document.getElementById("ServerResponse").style="display:initial";
+        document.getElementById("PopularID").style="display:none";
+        document.getElementById("recipeEnter").style="display:none";
 
     };
     function btn2Click(){
@@ -137,6 +140,12 @@ function myOnLoad(){
           btn2Click();
     };
 
+    function GetCustomerSpend()
+    {
+        var mySelect=document.getElementById("catNo");
+        console.log(mySelect.text);
+    }
+
     //event listeners
     document.getElementById("btn1").addEventListener("click",btn1Click);
     document.getElementById("btn2").addEventListener("click",btn2Click);
@@ -145,6 +154,7 @@ function myOnLoad(){
     document.getElementById("btn5").addEventListener("click",btn5Click);
     document.getElementById("btn6").addEventListener("click",btn6Click);
     document.getElementById("submitRecipe").addEventListener("click",SubmitRecipe);
+    document.getElementById("customerSpend").addEventListener("click",GetCustomerSpend);
 }
 
 
