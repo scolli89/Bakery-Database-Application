@@ -189,7 +189,7 @@ function myOnLoad(){
     }
     function GetCustomerSpend()
     {
-        var mySelect=document.getElementById("customerNo");
+        var mySelect = document.getElementById("customerName");
         var url = theUrl + "/customers";
         var body = {
             customerNo: mySelect.value
