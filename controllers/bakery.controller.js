@@ -19,12 +19,13 @@ exports.getCustomers = function(req,res){
 exports.getCustomerSpend = function(req,res){
     console.log(" Customer Spendt Function: ");
    
-    var person = req.body.customerName;
-    var sql = "SELECT c.customerName, SUM(itemPrice) as totalMoneySpent FROM Customer c INNER JOIN OrderHeader oh ON c.customerNo = oh.customerNo INNER JOIN (SELECT ob.orderNo, ob.qty*r.stdSellingPrice*ob.discountMultiple as itemPrice FROM OrderBody ob INNER JOIN recipe r ON ob.recipeNo = r.recipeNo) tbl  ON oh.orderNo = tbl.orderNo WHERE c.CustomerName = ";
+    var person = req.body.customerNo;
+    var params = [req.body.customerNo];
+    var sql = "SELECT c.customerName, SUM(itemPrice) as totalMoneySpent FROM Customer c INNER JOIN OrderHeader oh ON c.customerNo = oh.customerNo INNER JOIN (SELECT ob.orderNo, ob.qty*r.stdSellingPrice*ob.discountMultiple as itemPrice FROM OrderBody ob INNER JOIN recipe r ON ob.recipeNo = r.recipeNo) tbl  ON oh.orderNo = tbl.orderNo WHERE c.customerNo = ?";
 
-    sql = sql + "'"+person+"'"; 
+     
     console.log(sql);
-    db.query(sql,function (err,result, fields){
+    db.query(sql,params,function (err,result, fields){
         if (err) throw err;
         console.log(result);
         res.send(result);
@@ -52,12 +53,14 @@ exports.insertRecipe = function(req,res){
     var sp = req.body.stdSellingPrice;
 
     console.log("Lets make a recipe");
-    var sql = "INSERT INTO recipe (recipeName,categoryNo,instructions,qtyPerRecipe,estPrepTime,estCookTime,qtyOnHand,stdSellingPrice) VALUES(\'"+rName+"\',"+catNo+ ",\'"+instrc + "\',"+qtyPer +","+estPrep+","+estCook+","+qtyHand+","+sp+")" ;
+    var sql = "INSERT INTO recipe (recipeName,categoryNo,instructions,qtyPerRecipe,estPrepTime,estCookTime,qtyOnHand,stdSellingPrice) VALUES(?,?,?,?,?,?,?,?)";     
+    var params = [rName, catNo, instrc, qtyPer, estPrep, estCook, qtyHand, sp];
     console.log(sql)
-    db.query(sql, function (err,result,fields) {
+    db.query(sql, params, function (err,result,fields) {
        if (err) throw err;
     console.log("1 record inserted");
-    res.send("recipe inserted successfully")
+
+    res.send({words:"recipe inserted successfully"})
   });
 };
 

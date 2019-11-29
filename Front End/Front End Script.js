@@ -33,7 +33,7 @@ function myOnLoad(){
             }
             return response.json();
         }).catch(response => {
-            console.log(response);
+            console.log(response.json());
         });
 
 
