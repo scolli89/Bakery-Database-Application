@@ -89,6 +89,9 @@ function myOnLoad(){
     };
     function btn4Click(){
         console.log("btn4 click");
+        document.getElementById("ServerResponse").style="display:none";
+        document.getElementById("Top10").style="display:none";
+        document.getElementById("recipeEnter").style="display:none";
         document.getElementById("RecipeSearch").style="display:initial";
     };
     function btn5Click(){
@@ -97,7 +100,7 @@ function myOnLoad(){
         document.getElementById("ServerResponse").style="display:none";
         document.getElementById("Top10").style="display:initial";
         document.getElementById("recipeEnter").style="display:none";
-        document.getElementById("RecipeSearch").style="display:initial";
+        document.getElementById("RecipeSearch").style="display:none";
         var url = theUrl + "/mostpop";
         sendHttpRequest('GET',url).then(responseData => {
             var list = document.getElementById("mostPopularList");
