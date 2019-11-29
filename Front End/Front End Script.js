@@ -84,7 +84,8 @@ function myOnLoad(){
             }
             for (var i in selectionResponse){
                 var option = document.createElement("option");
-                 option.text = selectionResponse[i].categoryNo;
+                 option.text = selectionResponse[i].categoryName;
+                 option.value = selectionResponse[i].categoryNo;
                  mySelect.add(option);
             }
         });
