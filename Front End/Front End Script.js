@@ -58,6 +58,7 @@ function myOnLoad(){
         document.getElementById("ServerResponse").style="display:initial";
         document.getElementById("PopularID").style="display:none";
         document.getElementById("recipeEnter").style="display:none";
+        document.getElementById("RecipeSearch").style="display:none";
 
     };
     function btn2Click(){
@@ -67,7 +68,7 @@ function myOnLoad(){
             console.log(responseData);
             var selectionResponse = responseData;
             var mySelect=document.getElementById("catNo");
-            //mySelect.options.length=0;
+            mySelect.options.length=0;
             for (var i in selectionResponse){
                 var option = document.createElement("option");
                  option.text = selectionResponse[i].categoryName;
@@ -79,6 +80,7 @@ function myOnLoad(){
         document.getElementById("ServerResponse").style="display:none";
         document.getElementById("PopularID").style="display:none";
         document.getElementById("recipeEnter").style="display:initial";
+        document.getElementById("RecipeSearch").style="display:none";
 
         
     };
@@ -93,8 +95,9 @@ function myOnLoad(){
         console.log("btn5 click");
         console.log("get");
         document.getElementById("ServerResponse").style="display:none";
-        document.getElementById("PopularID").style="display:initial";
+        document.getElementById("PopularID").style="display:none";
         document.getElementById("recipeEnter").style="display:none";
+        document.getElementById("RecipeSearch").style="display:initial";
         var url = theUrl + "/mostpop";
         sendHttpRequest('GET',url).then(responseData => {
             console.log(responseData);
@@ -177,8 +180,24 @@ function myOnLoad(){
     }
     function GetCustomerSpend()
     {
-        var mySelect=document.getElementById("customerName");
-        console.log(mySelect.text);
+        var mySelect=document.getElementById("customerNo");
+        var url = theUrl + "/customers";
+        var body = {
+            customerNo: mySelect.value
+        }
+        sendHttpRequest('POST',url,body).then(responseData => {
+            console.log(responseData);
+            var selectionResponse = responseData;
+            var myAnswer=document.getElementById("customerAnswer");
+            myAnswer.innerHTML=" ";
+            var text1, text2
+            for (var i in selectionResponse){
+                var option = document.createElement("option");
+                 text1 = selectionResponse[i].customerName;
+                 text2 = selectionResponse[i].totalMoneySpent;
+            }
+            myAnswer.innerHTML="The customer "+text1+" has spent a total of "+text2;
+        });
     }
 
     //event listeners
