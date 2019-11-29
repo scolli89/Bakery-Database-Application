@@ -177,7 +177,7 @@ function myOnLoad(){
     }
     function GetCustomerSpend()
     {
-        var mySelect=document.getElementById("catNo");
+        var mySelect=document.getElementById("customerName");
         console.log(mySelect.text);
     }
 
