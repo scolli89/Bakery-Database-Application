@@ -87,8 +87,6 @@ function myOnLoad(){
     };
     function btn3Click(){
         console.log("btn3 click");
-        var list = document.getElementById("ingredientList");
-        list.innerHTML = "";
         var url = theUrl + "/recipes";
         sendHttpRequest('GET',url).then(responseData => {
             console.log(responseData);
@@ -106,6 +104,9 @@ function myOnLoad(){
         document.getElementById("SubtractIngredients").style="display:initial";
         document.getElementById("RecipeSearch").style="display:none";
         document.getElementById("Top10").style="display:none";
+
+        var list = document.getElementById("ingredientList");
+        list.innerHTML = "";
 
         GrabIngredients();
     };
