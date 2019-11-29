@@ -50,8 +50,8 @@ function myOnLoad(){
             mySelect.options.length=0;
             for (var i in selectionResponse){
                 var option = document.createElement("option");
-                 option.text = selectionResponse[i].categoryName;
-                 option.value = selectionResponse[i].categoryNo;
+                 option.text = selectionResponse[i].customerName;
+                 option.value = selectionResponse[i].customerNo;
                  mySelect.add(option);
             }
         });
