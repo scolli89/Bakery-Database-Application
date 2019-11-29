@@ -14,4 +14,12 @@ button {
     background-color: tomato;
     margin: .1cm;
 }
- 
+p {
+    background-color: rebeccapurple;
+}
+li {
+    background-color: seagreen;
+} 
+ul p {
+    background-color: lawngreen;
+}
