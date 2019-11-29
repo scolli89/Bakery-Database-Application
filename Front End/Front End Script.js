@@ -42,8 +42,9 @@ function myOnLoad(){
     function btn1Click(){
         console.log("btn1 click");
         console.log("update");
-        document.getElementById("recipeEnter").style="display:none";
         document.getElementById("ServerResponse").style="display:initial";
+        document.getElementById("PopularID").style="display:none";
+        document.getElementById("recipeEnter").style="display:none";
         var url = theUrl + "/customers";
         sendHttpRequest('GET',url).then(responseData => {
             console.log(responseData);
@@ -73,6 +74,7 @@ function myOnLoad(){
         });
         console.log('HI');
         document.getElementById("ServerResponse").style="display:none";
+        document.getElementById("PopularID").style="display:none";
         document.getElementById("recipeEnter").style="display:initial";
 
         
@@ -86,8 +88,9 @@ function myOnLoad(){
     function btn5Click(){
         console.log("btn5 click");
         console.log("get");
+        document.getElementById("ServerResponse").style="display:none";
+        document.getElementById("PopularID").style="display:initial";
         document.getElementById("recipeEnter").style="display:none";
-        document.getElementById("ServerResponse").style="display:initial";
         var url = theUrl + "/mostpop";
         sendHttpRequest('GET',url).then(responseData => {
             console.log(responseData);
