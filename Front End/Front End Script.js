@@ -201,25 +201,13 @@ function myOnLoad(){
         };
         sendHttpRequest('POST',url,body).then(responseData => {
             console.log(responseData);
-            // let inner = "";
-            // if (typeof(responseData[0].errorMessage) == "undefined"){
-            //     inner = "Successfully created recipe and decreased ingredient quantities";
-            // }
-            // else {
-            //     inner = "Not enough ingredients to make recipe";
-            // }
-
-            // var list = document.getElementById("ingredientList");
-            // list.innerHTML = inner;
-            // for (var i in responseData) {
-            //     var ingredientText = responseData[i].ingredientName + ": Qty On Hand = " + responseData[i].qtyOnHand + ", Needed = " + responseData[i].amount;
-            //     var tNode = document.createTextNode(ingredientText);
-
-            //     var li = document.createElement("li");
-            //     li.appendChild(tNode);
-
-            //     list.appendChild(li);
-            // }
+            if (responseData[0].word == "Success"){
+                GrabIngredients();
+            }
+            else {                
+                var list = document.getElementById("ingredientList");
+                list.appendChild(document.createTextNode("Not enough ingredients"));
+            }
         });
     }
 
