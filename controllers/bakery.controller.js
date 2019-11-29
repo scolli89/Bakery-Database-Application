@@ -85,7 +85,7 @@ exports.fFive = function(req,res){
 
 exports.recipeSearch = function(req,res){
 
-    var sql = 'SELECT * FROM recipe r WHERE recipeName = ?';
+    var sql = 'SELECT r.*, c.categoryName FROM recipe r INNER JOIN recipecategory c ON r.categoryNo = c.categoryNo WHERE recipeName = ?';
     var params = [req.body.recipeName + "%"];
     db.query(sql,params,function (err,result,field){
         if(err) throw err;
