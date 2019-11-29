@@ -11,7 +11,8 @@ router.post('/customers',bakery_controller.getCustomerSpend);
 //for function 1, the insert
 router.get('/categories',bakery_controller.getCategories);
 router.post('/insertRecipe',bakery_controller.insertRecipe);
-
-router.get('/functionFour',bakery_controller.fFour);
+// function 3, getting the most popular recipes of  the last ten days. 
+router.get('/mostpop',bakery_controller.mostPop);
+//
 router.get('/functionFive',bakery_controller.fFive);
 module.exports = router;

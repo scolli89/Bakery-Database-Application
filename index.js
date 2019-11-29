@@ -6,6 +6,7 @@ const app = express();
 const bakery = require('./routes/bakery.route');
 
 const mysql = require('mysql');
+//change these ports to whatever works for you
 const sqlport = 3306;
 const port= 5000;
 const urlBase = "/bake";
